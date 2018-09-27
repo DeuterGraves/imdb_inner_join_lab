@@ -34,7 +34,25 @@ def self.delete(id)
 end
 
 
-def save()
+def save(
+  sql = "
+  INSERT INTO movies(
+  title,
+  genre)
+  VALUES($1, $2)
+  RETURNING id
+    ;"
+
+    values = [@title, @genre]
+
+    result = SqlRunner.run(sql, values)
+
+    result_hash = result[0]
+    string_id = result_hash["id"]
+    @id = string_id.to_i()
+
+  )
+
 
 end
 

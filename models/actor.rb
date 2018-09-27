@@ -34,6 +34,21 @@ attr_reader(:id)
 
 
   def save()
+    sql = "
+    INSERT INTO movies(
+    f_name,
+    l_name)
+    VALUES ($1, $2)
+    RETURNING id
+    ;"
+
+    values = [@f_name, @l_name]
+
+    result = SqlRunner.run(sql, values)
+
+    result_hash = result[0]
+    string_id = result_hash["id"]
+    @id = string_id.to_i()
 
   end
 

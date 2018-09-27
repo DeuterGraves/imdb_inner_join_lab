@@ -10,9 +10,10 @@ def initialize(options)
   @fee = options["fee"]
 end
 
-def self.delete_all()
-
-end
+  def self.delete_all()
+    sql = "DELETE FROM roles;"
+    SqlRunner.run(sql)
+  end
 
 def self.all()
 

@@ -16,7 +16,11 @@ end
   end
 
 def self.all()
+  sql= "SELECT * FROM roles;"
 
+  role_hashes = SqlRunner.run(sql)
+  role_objects = role_hashes.map { |role| Actor.new(role)}
+  return role_objects
 end
 
 def self.find(id)

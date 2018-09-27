@@ -12,12 +12,16 @@ attr_reader(:id)
   end
 
   def self.delete_all()
-    sql = "DELETE FROM roles;"
+    sql = "DELETE FROM actors;"
     SqlRunner.run(sql)
   end
 
   def self.all()
+    sql= "SELECT * FROM actors;"
 
+    actors_hashes = SqlRunner.run(sql)
+    actor_objects = actors_hashes.map { |actor| Actor.new(actor)}
+    return actor_objects
   end
 
   def self.find(id)

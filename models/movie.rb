@@ -18,7 +18,11 @@ def self.delete_all()
 end
 
 def self.all()
+  sql= "SELECT * FROM roles;"
 
+  movie_hashes = SqlRunner.run(sql)
+  movie_objects = movie_hashes.map { |movie| Actor.new(movie)}
+  return movie_objects
 end
 
 def self.find(id)

@@ -18,10 +18,10 @@ def self.delete_all()
 end
 
 def self.all()
-  sql= "SELECT * FROM roles;"
+  sql= "SELECT * FROM movies;"
 
   movie_hashes = SqlRunner.run(sql)
-  movie_objects = movie_hashes.map { |movie| Actor.new(movie)}
+  movie_objects = movie_hashes.map { |movie| Movie.new(movie)}
   return movie_objects
 end
 
@@ -34,7 +34,7 @@ def self.delete(id)
 end
 
 
-def save(
+def save()
   sql = "
   INSERT INTO movies(
   title,
@@ -50,9 +50,6 @@ def save(
     result_hash = result[0]
     string_id = result_hash["id"]
     @id = string_id.to_i()
-
-  )
-
 
 end
 

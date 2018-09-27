@@ -19,7 +19,7 @@ def self.all()
   sql= "SELECT * FROM roles;"
 
   role_hashes = SqlRunner.run(sql)
-  role_objects = role_hashes.map { |role| Actor.new(role)}
+  role_objects = role_hashes.map { |role| Role.new(role)}
   return role_objects
 end
 
@@ -32,13 +32,12 @@ def self.delete(id)
 end
 
 
-def save(
+def save()
   sql = "
-  INSERT INO roles(
+  INSERT INTO roles(
   movie_id,
   actor_id,
-  fee
-  )
+  fee)
   VALUES($1, $2, $3)
   RETURNING id;"
 
@@ -49,7 +48,7 @@ def save(
   result_hash = result[0]
   string_id = result_hash["id"]
   @id = string_id.to_i()
-)
+
 
 end
 

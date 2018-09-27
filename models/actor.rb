@@ -17,7 +17,7 @@ attr_reader(:id)
   end
 
   def self.all()
-    sql= "SELECT * FROM actors;"
+    sql = "SELECT * FROM actors;"
 
     actors_hashes = SqlRunner.run(sql)
     actor_objects = actors_hashes.map { |actor| Actor.new(actor)}
@@ -35,7 +35,7 @@ attr_reader(:id)
 
   def save()
     sql = "
-    INSERT INTO movies(
+    INSERT INTO actors(
     f_name,
     l_name)
     VALUES ($1, $2)

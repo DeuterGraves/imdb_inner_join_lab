@@ -54,11 +54,10 @@ def save()
 end
 
 def update()
-  sql= "
-  UPDATE movies
+  sql= "UPDATE movies
   SET(
     title,
-    genre) 
+    genre)
   =($1, $2)
   WHERE id = $3
   ;"
@@ -68,6 +67,16 @@ def update()
 end
 
 def actors()
+  sql = "SELECT actors.*
+  FROM actors
+  INNER JOIN roles
+  ON actors.id = roles.actor_id
+  WHERE movie_id = $1
+  ;"
+
+  actors = SqlRunner.run(sql, [@id])
+  result = actors.map { |actor| Actor.new(actor)  }
+  return result
 
 end
 

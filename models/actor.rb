@@ -67,6 +67,15 @@ attr_reader(:id)
   end
 
   def movies()
+    sql = "SELECT movies.*
+    FROM movies
+    INNER JOIN roles
+    ON movies.id = roles.movie_id
+    WHERE actor_id = $1;"
+
+    movies = SqlRunner.run(sql, [@id])
+    result = movies.map {|movie| Movie.new(movie)}
+    return result
 
   end
 

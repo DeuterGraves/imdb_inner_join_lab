@@ -67,10 +67,24 @@ def update()
 end
 
 def movie()
+    sql = "SELECT * FROM movies
+    WHERE id = $1"
+
+    result = SqlRunner.run(sql, [@movie_id])
+    movie_hash = result[0]
+    movie = Movie.new(movie_hash)
+    return movie
 
 end
 
 def actor()
+  sql = "SELECT * FROM actors
+  WHERE id = $1"
+
+  result = SqlRunner.run(sql, [@actor_id])
+  actor_hash = result[0]
+  actor = Actor.new(actor_hash)
+  return actor
 
 end
 

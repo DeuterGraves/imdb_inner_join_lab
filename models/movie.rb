@@ -12,7 +12,34 @@ def initialize(options)
   @genre = options["genre"]
 end
 
+def self.delete_all()
 
+end
+
+def self.all()
+
+end
+
+def self.find(id)
+
+end
+
+def self.delete(id)
+
+end
+
+
+def save()
+
+end
+
+def update()
+
+end
+
+def actors()
+
+end
 
 # class end
 end

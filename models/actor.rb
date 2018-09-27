@@ -53,6 +53,16 @@ attr_reader(:id)
   end
 
   def update()
+    sql = "
+    UPDATE actors
+    SET(
+      f_name,
+      l_name)
+      = ($1, $2)
+      WHERE id = $3
+    ;"
+
+    SqlRunner.run(sql,[@f_name, @l_name, @id])
 
   end
 

@@ -1,7 +1,7 @@
 class Role
 
-  attr_reader(:id, :movie_id, :actor_id)
-  attr_accessor(:fee)
+  attr_reader(:id)
+  attr_accessor(:fee, :movie_id, :actor_id)
 
 def initialize(options)
   @id = options["id"].to_i()
@@ -53,7 +53,17 @@ def save()
 end
 
 def update()
+  sql = "
+  UPDATE roles
+  SET(
+    movie_id,
+    actor_id,
+    fee)
+    = ($1, $2, $3)
+    WHERE id = $4
+  ;"
 
+  SqlRunner.run(sql, [@movie_id, @actor_id, @fee, @id])
 end
 
 def movie()

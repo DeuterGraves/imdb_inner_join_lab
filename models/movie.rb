@@ -54,6 +54,16 @@ def save()
 end
 
 def update()
+  sql= "
+  UPDATE movies
+  SET(
+    title,
+    genre) 
+  =($1, $2)
+  WHERE id = $3
+  ;"
+
+  SqlRunner.run(sql, [@title, @genre, @id])
 
 end
 

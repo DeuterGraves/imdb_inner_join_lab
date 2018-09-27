@@ -15,8 +15,8 @@ actor1 = Actor.new({
 actor1.save()
 
 actor2 = Actor.new({
-  "f_name" => "Scarlett",
-  "l_name" => "Johansson"
+  "f_name" => "Scarlet",
+  "l_name" => "Johanson"
   })
 actor2.save()
 
@@ -27,7 +27,7 @@ actor3 = Actor.new({
 actor3.save()
 
 movie1 = Movie.new({
-  "title" => "Avengers: Infinity War",
+  "title" => "Avenger: Infinity Warz",
   "genre" => "Action"
   })
 movie1.save()
@@ -74,11 +74,20 @@ role4.save()
 
 role4 = Role.new({
   "movie_id" => movie3.id,
-  "actor_id" => actor2.id,
+  "actor_id" => actor3.id,
   "fee" => 15
   })
 role4.save()
 
+#binding.pry
+
+movie1.title = "Avengers: Infinity War"
+movie1.update()
+actor2.f_name = "Scarlett"
+actor2.l_name = "Johansson"
+actor2.update()
+role4.actor_id = actor2.id
+role4.update()
 
 
 
